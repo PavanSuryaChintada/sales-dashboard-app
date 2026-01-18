@@ -31,7 +31,7 @@ export const LineChart: React.FC<LineChartProps> = ({
         <XAxis dataKey="month" />
         <YAxis />
         <Tooltip
-          formatter={(value: number) => `$${value.toLocaleString()}`}
+          formatter={(value: number | undefined) => `$${(value || 0).toLocaleString()}`}
           labelStyle={{ color: "#333" }}
         />
         <Legend />

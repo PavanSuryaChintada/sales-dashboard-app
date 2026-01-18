@@ -41,11 +41,11 @@ export const PieChart: React.FC<PieChartProps> = ({
     <ResponsiveContainer width="100%" height={400}>
       <RechartsPieChart>
         <Pie
-          data={filteredData}
+          data={filteredData as any}
           cx="50%"
           cy="50%"
           labelLine={false}
-          label={({ month, percent }) =>
+          label={({ month, percent }: any) =>
             `${month} ${(percent * 100).toFixed(0)}%`
           }
           outerRadius={120}
@@ -58,7 +58,7 @@ export const PieChart: React.FC<PieChartProps> = ({
           ))}
         </Pie>
         <Tooltip
-          formatter={(value: number) => `$${value.toLocaleString()}`}
+          formatter={(value: number | undefined) => `$${(value || 0).toLocaleString()}`}
         />
         <Legend />
       </RechartsPieChart>
